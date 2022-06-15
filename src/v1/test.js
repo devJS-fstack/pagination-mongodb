@@ -1,14 +1,14 @@
-function limit(c){
-    return this.filter((x,i)=>{
-        if(i<=(c-1)){return true}
+function limit(c) {
+    return this.filter((x, i) => {
+        if (i <= (c - 1)) { return true }
     })
 }
-    
+
 Array.prototype.limit = limit;
 
-function skip(c){
-    return this.filter((x,i)=>{
-    if(i>(c-1)){return true}
+function skip(c) {
+    return this.filter((x, i) => {
+        if (i > (c - 1)) { return true }
     })
 }
 
@@ -45,4 +45,73 @@ const arr = [
 // console.log(arr.limit(2))
 
 // skip + limit
-console.log(arr.skip(2).limit(5))
+// console.log(arr.skip(2).limit(5))
+
+
+function salary(role) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (role == 1) {
+                return resolve({
+                    id: "1",
+                    name: "Tinh Nguyen",
+                    role: "1"
+                });
+            }
+
+            reject("You need login")
+        }, 1000)
+    })
+}
+
+async function fixbug() {
+    try {
+        var test = await salary(1);
+        console.log(test)
+    } catch (err) {
+        console.log(`This is error: ${err}`)
+    }
+}
+
+var logger = (parameter) => {
+    return `This is parameter ${parameter}`
+}
+
+var excute = (callback, result) => {
+    return callback(result);
+}
+
+// console.log(excute(logger, "Data Params Amazon Web Services"))
+
+
+
+
+const app = require('./utils/createApp')
+
+
+app.setBook('Tôi và em', 4000);
+app.setBook('Conan thám tử lừng danh', 5000);
+
+app.showAll();
+
+test('check item book equal with index 0', () => {
+    expect(app.getBook(0)).toEqual({
+        name: 'Conan thám tử lừng danh',
+        price: 5000,
+    })
+})
+
+test('check item book equal with index 1', () => {
+    expect(app.getBook(1)).toEqual({
+        name: 'Conan thám tử lừng danh',
+        price: 5000,
+    })
+})
+
+test('check length book with length = 2', () => {
+    expect(app.length()).toBe(2);
+})
+
+test('check length book with length = 1', () => {
+    expect(app.length()).toBe(1);
+})

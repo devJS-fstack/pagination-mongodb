@@ -54,3 +54,23 @@ GET http://localhost:3051/v1/api/comments-hacknew?commentId=60&pagesize=30
 ### bucket-comments
 
 GET http://localhost:3051/v1/api/bucket-comments?blogId=1&page=2
+
+### GET STATICS
+
+GET http://localhost:3051/v1/services/getStatics
+
+### GET METHODS
+
+GET http://localhost:3051/v1/services/getMethods
+
+### CREATE USER
+
+POST http://localhost:3051/v1/services/createUser
+Content-Type: application/json
+
+{
+    "username":"NodeJs",
+    "email":"vantinhnguyen728@gmail.com",
+    "userId":29
+}
+

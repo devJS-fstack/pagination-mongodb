@@ -10,8 +10,14 @@ const {
     atomicInsert,
     list,
     listPageUsingBucket,
-    insertBucket
+    insertBucket,
 } = require('../controllers/paging.controller')
+
+const {
+    getMethods,
+    getStatics,
+    createUser
+} = require('../controllers/user.controller')
 
 router.get('/checkstatus', (req, res, next) => {
     res.status(200).json({
@@ -28,5 +34,10 @@ router.post('/v1/api/commentMany', insertManyComments)
 router.get('/v1/api/comments', list)
 router.get('/v1/api/comments-hacknew', listHacknews)
 router.get('/v1/api/bucket-comments', listPageUsingBucket)
+
+// services user
+router.get('/v1/services/getMethods', getMethods)
+router.get('/v1/services/getStatics', getStatics)
+router.post('/v1/services/createUser', createUser)
 
 module.exports = router;

@@ -11,12 +11,12 @@ const {
 
 const { insertEvent, atomicInsert } = require('../services/event.service')
 
-const {insertBucket, listPaging} = require('../services/bucket.service') 
+const { insertBucket, listPaging } = require('../services/bucket.service')
 
 var that = module.exports = {
     listPageUsingBucket: async (req, res, next) => {
-        const { blogId, page = 1, pagesize = 1} = req.query;
-        const listComments = await listPaging({blogId, page, pagesize})
+        const { blogId, page = 1, pagesize = 1 } = req.query;
+        const listComments = await listPaging({ blogId, page, pagesize })
         return res.status(200).json({
             status: 'success',
             elements: listComments[0].comments,
@@ -28,8 +28,8 @@ var that = module.exports = {
     },
     insertBucket: async (req, res, next) => {
         try {
-            const {blogId, commentId, name, email, body} = req.body;
-            return res.status(200).json(await insertBucket({blogId, commentId, name, email, body}))
+            const { blogId, commentId, name, email, body } = req.body;
+            return res.status(200).json(await insertBucket({ blogId, commentId, name, email, body }))
         } catch (error) {
             console.error(`insertComments Controller::`, error.message)
             next(error)
@@ -37,9 +37,9 @@ var that = module.exports = {
     },
     insertEvent: async (req, res, next) => {
         try {
-            
-            const {userId} = req.body;
-            return res.status(200).json(await insertEvent({userId}))
+
+            const { userId } = req.body;
+            return res.status(200).json(await insertEvent({ userId }))
         } catch (error) {
             console.error(`insertComments Controller::`, error.message)
             next(error)
@@ -47,9 +47,9 @@ var that = module.exports = {
     },
     atomicInsert: async (req, res, next) => {
         try {
-            
-            const {userId} = req.body;
-            return res.status(200).json(await atomicInsert({userId}))
+
+            const { userId } = req.body;
+            return res.status(200).json(await atomicInsert({ userId }))
         } catch (error) {
             console.error(`insertComments Controller::`, error.message)
             next(error)
@@ -57,22 +57,22 @@ var that = module.exports = {
     },
     insertComments: async (req, res, next) => {
         try {
-            
-            const {blogId, commentId, name, emai, body} = req.body;
+
+            const { blogId, commentId, name, emai, body } = req.body;
             return res.status(200).json({
                 status: 'success',
-                elements: await insertComments({blogId, commentId, name, emai, body})
+                elements: await insertComments({ blogId, commentId, name, emai, body })
             })
         } catch (error) {
             console.error(`insertComments Controller::`, error.message)
             next(error)
         }
     },
-    insertManyComments: async( req, res, next) => {
+    insertManyComments: async (req, res, next) => {
         try {
             // node js 18
             const resp = await (await fetch(`https://jsonplaceholder.typicode.com/comments`)).json();
-            const newArray = resp.map( comment => {
+            const newArray = resp.map(comment => {
                 return {
                     blogId: 1,
                     commentId: +comment.id,
@@ -92,7 +92,8 @@ var that = module.exports = {
         }
     },
     list: async (req, res, next) => {
-        const {page = 1, blogId, pagezise = 50} = req.query;
+        console.log(__namedev)
+        const { page = 1, blogId, pagezise = 50 } = req.query;
         res.status(200).json({
             status: "success",
             elements: await list({
@@ -106,8 +107,8 @@ var that = module.exports = {
             }
         })
     },
-    listHacknews: async(req, res, next) => {
-        const {commentId = 0, blogId = 1, pagesize = 30} = req.query;
+    listHacknews: async (req, res, next) => {
+        const { commentId = 0, blogId = 1, pagesize = 30 } = req.query;
         res.status(200).json({
             status: "success",
             elements: await listHacknews({

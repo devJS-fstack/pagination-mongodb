@@ -16,8 +16,10 @@ app.use(responseTime())
 // compress responses
 app.use(compression())
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 //router
+global.__namedev = 'Nguyen Van Tinh'
+
 app.use(require('./v1/routes/index.router'))
 
 // Error Handling Middleware called
@@ -27,7 +29,6 @@ app.use((req, res, next) => {
     error.status = 404;
     next(error);
 });
-
 
 // error handler middleware
 app.use((error, req, res, next) => {

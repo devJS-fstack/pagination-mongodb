@@ -92,26 +92,42 @@ const app = require('./utils/createApp')
 app.setBook('Tôi và em', 4000);
 app.setBook('Conan thám tử lừng danh', 5000);
 
-app.showAll();
+// app.showAll();
 
-test('check item book equal with index 0', () => {
-    expect(app.getBook(0)).toEqual({
-        name: 'Conan thám tử lừng danh',
-        price: 5000,
-    })
-})
+// test('check item book equal with index 0', () => {
+//     expect(app.getBook(0)).toEqual({
+//         name: 'Conan thám tử lừng danh',
+//         price: 5000,
+//     })
+// })
 
-test('check item book equal with index 1', () => {
-    expect(app.getBook(1)).toEqual({
-        name: 'Conan thám tử lừng danh',
-        price: 5000,
-    })
-})
+// test('check item book equal with index 1', () => {
+//     expect(app.getBook(1)).toEqual({
+//         name: 'Conan thám tử lừng danh',
+//         price: 5000,
+//     })
+// })
 
-test('check length book with length = 2', () => {
-    expect(app.length()).toBe(2);
-})
+// test('check length book with length = 2', () => {
+//     expect(app.length()).toBe(2);
+// })
 
-test('check length book with length = 1', () => {
-    expect(app.length()).toBe(1);
-})
+// test('check length book with length = 1', () => {
+//     expect(app.length()).toBe(1);
+// })
+
+class Book {
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    getNameBook() {
+        return this.name;
+    }
+}
+
+const book_romatic = new Book('tôi và em', 4000);
+const book_emty = new Book();
+console.log(book_romatic)
+console.log(book_emty);

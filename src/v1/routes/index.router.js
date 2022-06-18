@@ -16,7 +16,9 @@ const {
 const {
     getMethods,
     getStatics,
-    createUser
+    createUser,
+    regisUser,
+    validOtp
 } = require('../controllers/user.controller')
 
 router.get('/checkstatus', (req, res, next) => {
@@ -38,6 +40,7 @@ router.get('/v1/api/bucket-comments', listPageUsingBucket)
 // services user
 router.get('/v1/services/getMethods', getMethods)
 router.get('/v1/services/getStatics', getStatics)
-router.post('/v1/services/createUser', createUser)
+router.post('/v1/services/createUser', regisUser)
+router.post('/v1/services/valid-otp', validOtp)
 
 module.exports = router;

@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose')
+const OtpGenerator = require('otp-generator')
 
 const UserSchema = new Schema({
     userId: { type: Number, required: true },
@@ -17,13 +18,24 @@ UserSchema.methods.getMethods = function () {
     return `get methods with ${this.getTime}`
 }
 
-UserSchema.virtual('getTime').get(() => {
-    return Date.now();
-})
+UserSchema.statics.createOtp = () => {
+    return OtpGenerator.generate(6, {
+        digits: true,
+        lowerCaseAlphabets: false,
+        upperCaseAlphabets: false,
+        specialChars: false,
+    })
+}
 
-UserSchema.pre('save', function (next) {
-    this.username = "Tinh Nguyen";
-    next();
-})
+
+
+// UserSchema.virtual('getTime').get(() => {
+//     return Date.now();
+// })
+
+// UserSchema.pre('save', function (next) {
+//     this.username = "Tinh Nguyen";
+//     next();
+// })
 
 module.exports = model('users', UserSchema)

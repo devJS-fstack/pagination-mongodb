@@ -1,9 +1,11 @@
 'use strict';
 
 const {
-    getMethods,
-    getStatics,
-    createUser
+    // getMethods,
+    // getStatics,
+    // createUser
+    regisUser,
+    verifyOtp
 } = require('../services/user.service')
 
 var that = module.exports = {
@@ -39,4 +41,44 @@ var that = module.exports = {
             console.log(err)
         }
     },
+
+    regisUser: async (req, res, next) => {
+        try {
+            const { email } = req.body
+            const { code, message, elements } = await regisUser({
+                email
+            });
+
+
+            return res.status(code).json({
+                code,
+                message,
+                elements
+            })
+        } catch (error) {
+            console.log(error)
+            next(error)
+        }
+    },
+
+    validOtp: async (req, res, next) => {
+        try {
+            const { email, otp } = req.body
+
+            const { code, message, elements } = await verifyOtp({
+                email,
+                otp
+            })
+
+            return res.status(code).json({
+                code,
+                message,
+                elements
+            })
+
+        } catch (error) {
+            console.log(error)
+            next(error)
+        }
+    }
 }

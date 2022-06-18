@@ -36,6 +36,42 @@ const arr = [
     { id: 10, name: "glow" }
 ]
 
+// const arr1 = [1, 2, 3, 4, 5];
+// const arr2 = [2, 3, 6];
+// function different(arr1 = [], arr2 = []) {
+//     return arr1.reduce((pre, curr) => (!arr2.includes[curr] && pre.push(curr), pre), [])
+// }
+
+// const arrDif = different(arr1, arr2);
+// console.log(arrDif);
+
+// === Way 1 ===
+const arrToObj = arr => arr.reduce((acc, curr) => ({ ...acc, [curr[0]]: curr[1] }), {})
+
+// === Way 2 ===
+
+const arrToObj2 = arr => arr.reduce((acc, curr) => (acc[curr[0]] = curr[1], acc), {})
+
+
+// Expected results:
+var arrTest = [
+    ['name', 'Sơn Đặng'],
+    ['age', 18],
+];
+
+var obj = {
+    name: 'Sơn Đặng',
+    sex: 'Male',
+    age: 18
+}
+
+var { name: parentName, ...sex } = obj;
+console.log(parentName)
+console.log(sex);
+// arrToObj(arrTest);
+console.log(arrToObj(arrTest));
+
+
 // skip 
 
 // console.log(arr.skip(2))
@@ -115,19 +151,3 @@ app.setBook('Conan thám tử lừng danh', 5000);
 // test('check length book with length = 1', () => {
 //     expect(app.length()).toBe(1);
 // })
-
-class Book {
-    constructor(name, price) {
-        this.name = name;
-        this.price = price;
-    }
-
-    getNameBook() {
-        return this.name;
-    }
-}
-
-const book_romatic = new Book('tôi và em', 4000);
-const book_emty = new Book();
-console.log(book_romatic)
-console.log(book_emty);

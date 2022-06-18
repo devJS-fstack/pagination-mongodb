@@ -14,6 +14,7 @@
   "author": "anonystick <anonystick@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "compression": "^1.7.4",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
@@ -21,6 +22,7 @@
     "mongoose": "^6.3.3",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.16",
+    "otp-generator": "^4.0.0",
     "redis": "^3.1.2",
     "winston": "^3.7.2"
   },

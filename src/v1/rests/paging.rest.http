@@ -69,8 +69,16 @@ POST http://localhost:3051/v1/services/createUser
 Content-Type: application/json
 
 {
-    "username":"NodeJs",
-    "email":"vantinhnguyen728@gmail.com",
-    "userId":29
+    "email":"brolybad728@gmail.com"
+}
+
+### VALID OTP
+
+POST http://localhost:3051/v1/services/valid-otp
+Content-Type: application/json
+
+{
+    "email":"brolybad728@gmail.com",
+    "otp":"584904"
 }
 
